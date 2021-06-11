@@ -1,0 +1,29 @@
+﻿@model IEnumerable<sdp2.Models.Feedback>
+
+@{
+    ViewData["Title"] = "ViewFeed";
+}
+
+s
+
+
+
+@foreach (var item in Model) {
+       <div class="card">
+           <div class="card-header text-center">
+               @Html.DisplayFor(modelItem => item.Email)
+           </div>
+           <div class="card-body text-center">
+               Service:@Html.DisplayFor(modelItem => item.Service)<br />
+               FoodTaste:@Html.DisplayFor(modelItem => item.FoodTaste)<br />
+               Cleanliness: @Html.DisplayFor(modelItem => item.Cleanliness)<br />
+               Reply from Admin:@Html.DisplayFor(modelItem => item.Reply)<br />
+           </div>
+           <div class="card-footer text-center">
+               Suggestion: @Html.DisplayFor(modelItem => item.suggestion)
+           </div>
+
+       </div>        
+        <br />  
+}
+   

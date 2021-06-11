@@ -1,0 +1,30 @@
+﻿@model IEnumerable<sdp2.Models.Comments>
+
+@{
+    ViewData["Title"] = "ViewComments";
+}
+
+<h1>ViewComments</h1>
+
+<p>
+    <h1>Comments for @ViewBag.RecipeName Recipe</h1>
+</p>
+
+@foreach (var item in Model) 
+{
+        <div class="card m-2">
+            <div class="card-header">
+                <h1>Username:@item.Email</h1>
+            </div>
+            <div class="card-body">
+                <h3>
+                    Comment<br />
+                    @item.Comment
+                </h3>
+            </div>
+            <div class="card-footer">
+                @ViewBag.RecipeName
+            </div>
+        </div>
+}
+    

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RestaurantManagementSystem.Models.TableBooking.TableBooking>;
+
+<table class="table table-responsive">
+    <tr>
+        <td>Booking Requestor</td>
+        <td>Table Required at date/time</td>
+        <td>No of persons for which the table is required</td>
+    </tr>
+    @foreach(var tables in Model)
+    {
+        <tr>
+            <td>@tables.Email</td>
+            <td>@tables.AppointmentDateTime</td>
+            <td>@tables.Numberofpersons</td>
+            <td>
+                <form method="post" asp-action="AssignTable"  asp-controller="TableBooking">
+                    <input type="hidden" value="@tables.Email" name="Email" />  
+                    <input type="submit" class="btn btn-success" value="Assign Table"/>
+
+                </form>
+            </td>
+            
+        </tr>
+    }
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Menu>
+@inject SignInManager<IdentityUser> signinmanager
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (signinmanager.IsSignedIn(User) && !User.IsInRole("Admin"))
+{
+
+    <a asp-controller="Order" asp-action="MyOrder" style="height:40px;width:150px;" class="btn btn-primary m-1">My Orders</a>
+
+    <a asp-action="AddRecipe" asp-controller="Recipes" style="height:40px;width:150px;" class="btn btn-primary">Add Recipe</a>
+    
+    
+        <a asp-action="Create" asp-controller="TableBooking" style="height:40px;width:150px;" class="btn btn-primary" >Book Table</a>
+     <a asp-action="Create" asp-controller="Feedback" style="height:40px;width:150px;" class="btn btn-primary"> Give Feedback</a>
+       <a asp-action="ViewFeed" asp-controller="Feedback" style="height:40px;width:150px;" class="btn btn-primary"> View Feedbacks </a>
+        
+        <a asp-action="SearchRecipe" asp-controller="Recipes" style="height:40px;width:150px;" class="btn btn-primary">Search Recipe</a>
+
+}   
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        var photopath = "~/images/" + (item.PhotoPath ?? "i.jpg");
+
+        <div class="card m-3" style="min-width:18rem;max-width:30%;">
+            <div class="card-header">
+                <h3>@item.Name</h3>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top imageThumbnail" style="height:200px;width:200px;" src="@photopath" asp-append-version="true" />
+                <div class="card-footer text-center">
+                    <div><h4>Rs:@item.Price</h4></div>
+
+                    @if (signinmanager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="home" asp-action="details" asp-route-id="@item.Id" class="btn btn-primary m-1">View</a>
+                        <a asp-controller="home" asp-action="edit" asp-route-id="@item.Id" class="btn btn-primary m-1">Edit</a>
+
+                        <a asp-controller="home" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary m-1">Delete</a>
+                    }
+                    else
+                    {
+
+
+                        <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-itemId="@item.Id" class="btn btn-primary m-1">Order</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

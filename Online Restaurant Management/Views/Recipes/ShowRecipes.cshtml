@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RestaurantManagementSystem.Models.Recipes.Recipes>;
+
+
+@foreach(var mode in Model)
+{
+    <div class="card">
+
+        <div class="card-header">@mode.RecipeName</div>
+        <div class="card-body">@mode.Recipe</div>
+        <div class="card-footer">
+            RecipeBy:@mode.Email<br /><br />
+            <form asp-action="Create" asp-controller="Comments" method="get">
+                <input type="hidden" name="RecipesId" value="@mode.RecipesId"/>
+                <input type="submit" value="Comment on Recipe!" class="btn btn-success"/>
+            </form>
+            <form asp-action="ViewComments" asp-controller="Comments">
+                <input type="hidden" value="@mode.RecipesId" name="RecipeId"/>
+                <input type="submit" value="View Comments" class="btn btn-primary" />
+            </form>
+           
+        </div>
+    </div>
+    <br />
+}
+

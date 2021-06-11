@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RestaurantManagementSystem.Models.Table.Table>;
+
+<h1>Select Table Assignment</h1>
+
+<h2>Table is to be assigned for @ViewBag.Email and the number of persons are @ViewBag.Capacity</h2>
+
+<table border="1" cellpadding="20">
+    
+        @foreach (var mode in Model)
+        {
+            <tr>
+                <td>Table ID:@mode.TableID</td>
+                <td>
+                   Table Capacity:@mode.capacity
+                </td>
+                <td>Table Status:@mode.status</td>
+                <td>
+                    <form method="post" asp-action="FinalAssign" asp-controller="TableBooking">
+                        <input type="hidden" name="Email" value="@ViewBag.Email"/>
+                        <input type="hidden" name="tableid" value="@ViewBag.ID" />
+                        <input type="hidden" name="id" value="@mode.TableID" />
+                        <input type="submit" value="Assign Table" class="btn btn-outline-success"/>
+                    </form>
+                    
+                </td>
+            </tr>
+        }
+    
+</table>

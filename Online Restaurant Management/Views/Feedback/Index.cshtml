@@ -1,0 +1,58 @@
+﻿@model IEnumerable<sdp2.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Feedbacks</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodTaste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.suggestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cleanliness)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodTaste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.suggestion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cleanliness)
+            </td>
+            <td>
+                <form asp-action="Create" asp-controller="Reply" method="get">
+                    <input type="hidden" value="@item.Email" name="Email"/>
+                    <input type="hidden" value="@item.FeedbackId" name="FeedbackId" />
+                    <input type="submit" value="Reply Feedback" class="btn btn-success" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@model sdp.Models.Menu 
+
+@{
+    ViewBag.Title = "Details";
+    var photopath = "~/images/" + (Model.PhotoPath ?? "i.jpg");
+}
+<h3>@ViewBag.PageTitle</h3>
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <h1>@Model.Name</h1>
+        </div>
+        <div class="card-body text-center">
+            <img class="card-img-top" src="@photopath" asp-append-version="true" />
+            <h4>Food Id:@Model.Id</h4>
+            <h4>Price:@Model.Price</h4>
+            <h4>Ingredients:@Model.Ingredients</h4>
+            <h4>Category:@Model.Category</h4>
+
+        </div>
+        <div class="card-footer text-center">
+
+            <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+            <a asp-controller="home" asp-action="edit" asp-route-id="@Model.Id" class="btn btn-primary m-1">Edit</a>
+            <a asp-controller="home" asp-action="delete" asp-route-id="@Model.Id" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/CustomScript.js"></script>
+
+}

@@ -1,0 +1,45 @@
+﻿@model sdp2.Models.Feedback
+
+@{
+    ViewData["Title"] = "ShowFeedback";
+}
+
+<h1>ShowFeedback</h1>
+
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Service)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodTaste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FoodTaste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.suggestion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.suggestion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cleanliness)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cleanliness)
+        </dd>
+    </dl>
+</div>
+
